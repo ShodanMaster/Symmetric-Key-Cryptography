@@ -1,0 +1,37 @@
+l = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
+     'h', 'i', 'j', 'k', 'l', 'm', 'n',
+     'o', 'p', 'q', 'r', 's', 't', 'u',
+     'v', 'w', 'x', 'y', 'z']
+
+def Cipher(key, text):
+    encrypt = ''
+    for i in text:
+        if i in l:
+            p = l.index(i)
+            n = (p + key) % len(l)
+            encrypt += l[n]
+        else:
+            encrypt += i  
+    print('Encrypted:', encrypt)
+
+def Encipher(key, text):
+    decrypt = ''
+    for i in text:
+        if i in l:
+            p = l.index(i)
+            n = (p - key) % len(l)
+            decrypt += l[n]
+        else:
+            decrypt += i  
+    print('Decrypted:', decrypt)
+
+while True:
+    text = input('Enter Text: ')
+    key = int(input('Enter Key: '))
+    choice = input('1)Encrypt\n2)Decrypt\nEnter Your Choice: ')
+    if choice == '1':
+        Cipher(key, text.lower())
+    elif choice == '2':
+        Encipher(key, text)
+    else:
+        print('Invalid Choice')
